@@ -78,7 +78,7 @@ ${ANSIBLE_DB}
 [all:vars]
 admin_password=${ANSIBLE_ADMIN_PASSWD}
 
-pg_host='${ANSIBLE_ADMIN_PASSWD} '
+pg_host='${ANSIBLE_DB}'
 pg_port='5432'
 
 pg_database='awx'
