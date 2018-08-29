@@ -82,7 +82,7 @@ pg_host='${ANSIBLE_DB}'
 pg_port='5432'
 
 pg_database='awx'
-pg_username='admin'
+pg_username='dbuser'
 pg_password=${ANSIBLE_DBADMIN_PASSWD}
 
 rabbitmq_port=5672
