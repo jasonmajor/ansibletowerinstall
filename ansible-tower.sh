@@ -73,7 +73,6 @@ cat <<EOF >> inventory
 ${EC2_HOSTNAME} ansible_connection=local
 
 [database]
-${ANSIBLE_DBE}
 
 [all:vars]
 admin_password=${ANSIBLE_ADMIN_PASSWD}
@@ -88,7 +87,7 @@ pg_password=${ANSIBLE_DBADMIN_PASSWD}
 # rabbitmq_port=5672
 # rabbitmq_vhost=tower
 # rabbitmq_username=rabbitmq
-# rabbitmq_password=${ANSIBLE_DBADMIN_PASSWD}
+rabbitmq_password=${ANSIBLE_DBADMIN_PASSWD}
 # rabbitmq_cookie=rabbitmqcookie
 #
 # rabbitmq_use_long_name=true
