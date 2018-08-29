@@ -64,7 +64,7 @@ chmod 400 ${ADMINFO}
 ##############################################################
 ANSIBLE_ADMIN_PASSWD=`cat $ADMINFO| grep ansible_admin_password | awk -F"|" '{print $2}'`
 ANSIBLE_DBADMIN_PASSWD=`cat $ADMINFO| grep ansible_dbadmin_password | awk -F"|" '{print $2}'`
-ANSIBLE_DB=`cat $ADMINFO| grep ansible_db | awk -F"|" '{print $2}'`
+ANSIBLE_DBE=`cat $ADMINFO| grep ansible_dbe | awk -F"|" '{print $2}'`
 
 # Create inventory file
 >inventory
@@ -73,27 +73,25 @@ cat <<EOF >> inventory
 ${EC2_HOSTNAME} ansible_connection=local
 
 [database]
-${ANSIBLE_DB}
+${ANSIBLE_DBE}
 
 [all:vars]
 admin_password=${ANSIBLE_ADMIN_PASSWD}
 
-pg_host='${ANSIBLE_DB}'
+pg_host='${ANSIBLE_DBE}'
 pg_port='5432'
 
 pg_database='awx'
 pg_username='dbuser'
 pg_password=${ANSIBLE_DBADMIN_PASSWD}
 
-rabbitmq_port=5672
-rabbitmq_vhost=tower
-rabbitmq_username=rabbitmq
-rabbitmq_password=${ANSIBLE_DBADMIN_PASSWD}
-rabbitmq_cookie=rabbitmqcookie
-
-rabbitmq_use_long_name=true
-
-
+# rabbitmq_port=5672
+# rabbitmq_vhost=tower
+# rabbitmq_username=rabbitmq
+# rabbitmq_password=${ANSIBLE_DBADMIN_PASSWD}
+# rabbitmq_cookie=rabbitmqcookie
+#
+# rabbitmq_use_long_name=true
 EOF
 
 #############################################################
